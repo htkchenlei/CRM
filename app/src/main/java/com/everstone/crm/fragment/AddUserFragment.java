@@ -42,6 +42,10 @@ public class AddUserFragment extends Fragment{
         return view;
     }
 
+    /**
+     * 初始化View
+     * @param view
+     */
     private void initView(View view){
         editTextUsername = (EditText)view.findViewById(R.id.add_username);
         editTextNumber = (EditText)view.findViewById(R.id.add_number);
@@ -98,6 +102,10 @@ public class AddUserFragment extends Fragment{
         });
     }
 
+    /**
+     * 保存新增的用户
+     * @return
+     */
     private boolean saveUser(){
         User user = new User();
         myOpenHelper = new MyOpenHelper(getActivity());
@@ -112,6 +120,15 @@ public class AddUserFragment extends Fragment{
         return flag;
     }
 
+    /**
+     * 确认填入的用户信息是否有空值
+     * @param username
+     * @param number
+     * @param address
+     * @param sex
+     * @param date
+     * @return
+     */
     private boolean checkUserInfo(String username, String number, String address, String sex, String date){
         boolean userInfoFlag = true;
         if(username.isEmpty() || username.trim().equals("")){

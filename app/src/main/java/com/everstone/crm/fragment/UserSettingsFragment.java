@@ -37,10 +37,18 @@ public class UserSettingsFragment extends Fragment {
 
     private TextView searchButton;
     private EditText search;
-    private ImageView delete;
+    private ImageView clear;
     private ListView listView;
     MyOpenHelper myOpenHelper;
     List<User> userList;
+
+    /**
+     * 加载UserSettingFragment的View
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return
+     */
 
     @Nullable
     @Override
@@ -50,32 +58,50 @@ public class UserSettingsFragment extends Fragment {
         return view;
     }
 
+    /**
+     * 初始化View，搜索框中输入文字后会实时进行模糊查询用户，并出现删除搜索文字的图片
+     * @param view
+     */
     private void initView(View view){
         search = (EditText)view.findViewById(R.id.search);
         searchButton = (TextView)view.findViewById(R.id.search_button);
-        delete = (ImageView)view.findViewById(R.id.delete);
+        clear = (ImageView)view.findViewById(R.id.clear);
         listView = (ListView)view.findViewById(R.id.listview);
 
-        delete.setOnClickListener(new View.OnClickListener() {
+        /**
+         * 点击clear图片之后清空搜索框文字，并设置图片不可见
+         */
+        clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 search.setText("");
-                delete.setVisibility(View.INVISIBLE);
+                clear.setVisibility(View.INVISIBLE);
             }
         });
 
+        /**
+         * 搜索框文字变动监听器
+         */
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
             }
 
+            /**
+             * 搜索框没有文字时，不出现clear图片
+             * 有文字时，每当文字发生变动都更新ListView，展示搜索结果，并出现clear图片
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(charSequence.length() == 0){
-                    delete.setVisibility(View.INVISIBLE);
+                    clear.setVisibility(View.INVISIBLE);
                 }else{
-                    delete.setVisibility(View.VISIBLE);
+                    clear.setVisibility(View.VISIBLE);
                     showListView(charSequence);
                 }
             }
@@ -86,6 +112,9 @@ public class UserSettingsFragment extends Fragment {
             }
         });
 
+        /**
+         * 对TextView设置监听器，当没有文字的时候出现提示信息
+         */
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +125,12 @@ public class UserSettingsFragment extends Fragment {
         });
     }
 
+    /**
+     * 通过传入char sequence字符串
+     * 使用fuzzyQuery方法进行模糊查询
+     * 为搜索结果的listView设置Item监听器，用户点击后跳转到拨打电话的界面，直接拨打电话
+     * @param charSequence
+     */
     private void showListView(CharSequence charSequence){
         listView.setVisibility(View.VISIBLE);
         myOpenHelper = new MyOpenHelper(getActivity());

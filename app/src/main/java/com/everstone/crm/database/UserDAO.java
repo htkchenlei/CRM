@@ -19,6 +19,11 @@ public class UserDAO {
         this.sqLiteDatabase = sqLiteDatabase;
     }
 
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
     public boolean addUser(User user){
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", user.getUsername());
@@ -33,6 +38,10 @@ public class UserDAO {
         return true;
     }
 
+    /**
+     * 查询全部用户，显示在主界面上
+     * @return
+     */
     public List<User> queryAll(){
         List<User> userList = new ArrayList<>();
         Cursor cursor =sqLiteDatabase.query("crm", null, null, null, null, null, "date desc");
@@ -49,6 +58,11 @@ public class UserDAO {
         return userList;
     }
 
+    /**
+     * 通过id查询用户
+     * @param id
+     * @return
+     */
     public User queryUser(String id){
         User user = new User();
         String table = "CRM";
@@ -67,6 +81,11 @@ public class UserDAO {
         return user;
     }
 
+    /**
+     * 更新用户信息
+     * @param user
+     * @return
+     */
     public boolean updateUser(User user){
         ContentValues contentValues = new ContentValues();
         contentValues.put("username", user.getUsername());
@@ -83,6 +102,12 @@ public class UserDAO {
         return true;
     }
 
+    /**
+     * 根据用户输入，以username和number为条件进行模糊查询，返回userList
+     * 如果没有查询到结果，则返回-1
+     * @param query
+     * @return
+     */
     public List<User> fuzzyQuery(String query){
         List<User> userList = new ArrayList<>();
         String sql1 = "select * from CRM where username like '%" + query + "%'";

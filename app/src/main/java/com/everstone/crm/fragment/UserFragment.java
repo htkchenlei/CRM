@@ -44,6 +44,9 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
         return view;
     }
 
+    /**
+     * 查找全部user，并将其展示在userfragment上
+     */
     private void initData(){
         myOpenHelper = new MyOpenHelper(getActivity());
         SQLiteDatabase sqLiteDatabase = myOpenHelper.getReadableDatabase();
@@ -59,6 +62,10 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
         }
     }
 
+    /**
+     * c初始化View，展示在UserFragment上
+     * @param view
+     */
     private void initView(View view){
         ListView listView = (ListView)view.findViewById(R.id.userList);
         simpleAdapter = new SimpleAdapter(getActivity(), dataList, R.layout.user_item, new String[]{"username", "number"}, new int[]{R.id.item_username, R.id.item_number});
@@ -67,6 +74,13 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
         listView.setOnItemClickListener(this);
     }
 
+    /**
+     * 点击用户信息后，会自动跳转到UserInfoActivity去展示全面的用户信息
+     * @param adapterView
+     * @param view
+     * @param i
+     * @param l
+     */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 

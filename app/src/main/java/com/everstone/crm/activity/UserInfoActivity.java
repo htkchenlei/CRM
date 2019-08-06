@@ -68,6 +68,11 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         date.setText(user.getDate());
     }
 
+    /**
+     * 通过设置flag来判断当前用户操作
+     * 从而决定两个button显示的文字和作用
+     * @param view
+     */
     @Override
     public void onClick(View view) {
         //Log.d("flag = ", String.valueOf(EDITABLE_FLAG));
