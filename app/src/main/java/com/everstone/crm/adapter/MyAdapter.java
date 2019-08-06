@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.everstone.crm.R;
 import com.everstone.crm.entity.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
@@ -24,6 +23,11 @@ public class MyAdapter extends BaseAdapter {
         this.inflater = LayoutInflater.from(context);
     }
 
+    /**
+     * 如果查询到用户，返回用户数量
+     * 如果没查询到用户，返回-1
+     * @return
+     */
     @Override
     public int getCount() {
         if(userList == null){
@@ -43,6 +47,14 @@ public class MyAdapter extends BaseAdapter {
         return i;
     }
 
+    /***
+     * 模糊查询的视图Adapter，加载view文件，初始化username和number后
+     * 依据查询到的结果数量进行对应的界面设置和文字显示
+     * @param i
+     * @param view
+     * @param viewGroup
+     * @return
+     */
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         View myView = inflater.inflate(R.layout.user_item, null);
