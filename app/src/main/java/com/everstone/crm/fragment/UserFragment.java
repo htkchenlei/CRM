@@ -85,7 +85,6 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
      */
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
         Intent intent = new Intent(getActivity(), UserInfoActivity.class);
         intent.putExtra("id", userList.get(i).getId());
         startActivity(intent);

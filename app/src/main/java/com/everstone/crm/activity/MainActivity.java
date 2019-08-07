@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         fragmentList.add(userFragmemnt);
         fragmentList.add(addUserFragment);
         fragmentList.add(userSettingFragment);
-        Log.d("info", "fragments load...");
         myFragmentAdapter = new MyFragmentAdapter(getSupportFragmentManager(), fragmentList);
     }
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
         radioButtonUser = (RadioButton)findViewById(R.id.user);
         radioButtonAddUser = (RadioButton)findViewById(R.id.add_user);
         radioButtonUserSettings= (RadioButton)findViewById(R.id.user_settings);
-        radioGroup = (RadioGroup)findViewById(R.id.radioGrop);
+        radioGroup = (RadioGroup)findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(this);
 
         viewPager = (ViewPager)findViewById(R.id.viewPager);

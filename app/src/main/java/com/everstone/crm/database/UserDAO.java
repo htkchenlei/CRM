@@ -143,4 +143,13 @@ public class UserDAO {
         }
         return userList;
     }
+
+    public boolean deleteUser(User user){
+        int result = sqLiteDatabase.delete("crm ", "id = ? ", new String[]{user.getId() + ""});
+        if(result == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }

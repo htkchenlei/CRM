@@ -15,55 +15,9 @@
         android:flipInterval="30"
         android:persistentDrawingCache="animation" >
     </androidx.viewpager.widget.ViewPager>
-<!--
+
     <RadioGroup
-        android:id="@+id/radioGrop"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/user"
-            android:gravity="center"
-            android:paddingLeft="0dp"
-            android:text="@string/user"
-            android:textColor="@drawable/bottom_font_selector" />
-
-        <RadioButton
-            android:id="@+id/add_user"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/add_user"
-            android:gravity="center"
-            android:paddingLeft="0dp"
-            android:text="@string/add_user"
-            android:textColor="@drawable/bottom_font_selector" />
-
-        <RadioButton
-            android:id="@+id/user_settings"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:button="@null"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/user_settings"
-            android:gravity="center"
-            android:paddingLeft="0dp"
-            android:text="@string/user_settings"
-            android:textColor="@drawable/bottom_font_selector" />
-    </RadioGroup>
-    -->
-    <RadioGroup
-        android:id="@+id/radioGrop"
+        android:id="@+id/radioGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >

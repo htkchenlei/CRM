@@ -1,8 +1,10 @@
 package com.everstone.crm.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
@@ -30,8 +32,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
     private User user;
     private MyOpenHelper myOpenHelper;
     private SQLiteDatabase sqLiteDatabase;
-    private Button edit, back;
-    private LinearLayout linearLayout;
+    private Button edit, delete;
     private int EDITABLE_FLAG = 0;
 
     @Override
@@ -51,10 +52,10 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
         sex = (TextView)findViewById(R.id.info_sex);
         date = (TextView)findViewById(R.id.info_date);
         edit = (Button)findViewById(R.id.edit);
-        back = (Button)findViewById(R.id.back);
+        delete = (Button)findViewById(R.id.delete);
 
         edit.setOnClickListener(this);
-        back.setOnClickListener(this);
+        delete.setOnClickListener(this);
 
         UserDAO userDAO = new UserDAO(sqLiteDatabase);
         Intent intent = getIntent();
@@ -81,7 +82,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
             case R.id.edit:
                 if(EDITABLE_FLAG == 0){
                     edit.setText(R.string.save);
-                    back.setText(R.string.reset);
+                    delete.setText(R.string.reset);
                     EDITABLE_FLAG = 1;
 
                     username.setEnabled(true);
@@ -93,7 +94,7 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                     break;
                 }else if(EDITABLE_FLAG == 1){
                     edit.setText(R.string.edit);
-                    back.setText(R.string.back);
+                    delete.setText(R.string.delete);
                     EDITABLE_FLAG = 0;
 
                     user.setUsername(String.valueOf(username.getText()));
@@ -114,13 +115,41 @@ public class UserInfoActivity extends AppCompatActivity implements View.OnClickL
                     }
                     break;
                 }
-            case R.id.back:
+            case R.id.delete:
                if(EDITABLE_FLAG == 0){
-                   Intent intent = new Intent(this, MainActivity.class);
-                   startActivity(intent);
+                   AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                   builder.setTitle(user.getUsername());
+                   builder.setMessage("确定要删除该用户吗？");
+                   builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialogInterface, int i) {
+                           UserDAO userDAO = new UserDAO(sqLiteDatabase);
+                           if(userDAO.deleteUser(user)) {
+                               ToastUtil.showShort(UserInfoActivity.this, "删除成功");
+                               Intent intent = new Intent(UserInfoActivity.this, MainActivity.class);
+                               startActivity(intent);
+                           }else{
+                               ToastUtil.showShort(UserInfoActivity.this, "删除不成功");
+                           }
+                       }
+                   });
+                   builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                       @Override
+                       public void onClick(DialogInterface dialogInterface, int i) {
+                           edit.setText(R.string.edit);
+                           delete.setText(R.string.delete);
+                           EDITABLE_FLAG = 0;
+                           username.setEnabled(false);
+                           number.setEnabled(false);
+                           address.setEnabled(false);
+                           sex.setEnabled(false);
+                           date.setEnabled(false);
+                       }
+                   });
+                   builder.show();
                }else if(EDITABLE_FLAG == 1){
                    edit.setText(R.string.save);
-                   back.setText(R.string.reset);
+                   delete.setText(R.string.reset);
 
                    username.setText(user.getUsername());
                    number.setText(user.getNumber());

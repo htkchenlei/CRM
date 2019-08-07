@@ -1,5 +1,6 @@
 package com.everstone.crm.fragment;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import com.everstone.crm.R;
+import com.everstone.crm.activity.MainActivity;
 import com.everstone.crm.database.MyOpenHelper;
 import com.everstone.crm.database.UserDAO;
 import com.everstone.crm.entity.User;
@@ -93,6 +95,8 @@ public class AddUserFragment extends Fragment{
                     boolean userSaveFlag = saveUser();
                     if(userSaveFlag) {
                         ToastUtil.show(getActivity(), "新增用户完成", 3);
+                        Intent intent= new Intent(getActivity(), MainActivity.class);
+                        startActivity(intent);
                     }
                 }else{
                     ToastUtil.show(getActivity(), "用户信息有误", 3);

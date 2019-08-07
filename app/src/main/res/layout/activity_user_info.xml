@@ -205,12 +205,12 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/back"
+            android:id="@+id/delete"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="@string/back"
+            android:text="@string/delete"
             android:textSize="20sp" />
 
     </LinearLayout>
