@@ -7,10 +7,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/userinfo"
+        android:text="@string/adduser"
         android:textSize="28sp"
         android:gravity="center"
-        android:background="@color/orange_light"/>
+        android:background="@color/orange_light"
+        android:textColor="@color/white"
+        android:paddingBottom="3dp"
+        android:paddingTop="3dp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"

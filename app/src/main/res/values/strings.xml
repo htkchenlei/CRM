@@ -14,6 +14,8 @@
     <string name="dialog_sex">用户性别: </string>
     <string name="dialog_date">添加日期: </string>
     <string name="userinfo">用户信息</string>
+    <string name="userlist">用户列表</string>
+    <string name="adduser">添加用户</string>
     <string name="edit">编辑</string>
     <string name="back">返回</string>
     <string name="save">保存</string>

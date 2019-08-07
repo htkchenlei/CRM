@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.everstone.crm.R;
 import com.everstone.crm.activity.UserInfoActivity;
@@ -58,6 +59,7 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
             Map<String, String> map = new HashMap<>();
             map.put("username", user.getUsername());
             map.put("number", user.getNumber());
+            map.put("address", user.getAddress());
             dataList.add(map);
         }
     }
@@ -68,7 +70,7 @@ public class UserFragment extends Fragment implements AdapterView.OnItemClickLis
      */
     private void initView(View view){
         ListView listView = (ListView)view.findViewById(R.id.userList);
-        simpleAdapter = new SimpleAdapter(getActivity(), dataList, R.layout.user_item, new String[]{"username", "number"}, new int[]{R.id.item_username, R.id.item_number});
+        simpleAdapter = new SimpleAdapter(getActivity(), dataList, R.layout.user_item, new String[]{"username", "number", "address"}, new int[]{R.id.item_username, R.id.item_number, R.id.item_address});
         listView.setAdapter(simpleAdapter);
 
         listView.setOnItemClickListener(this);

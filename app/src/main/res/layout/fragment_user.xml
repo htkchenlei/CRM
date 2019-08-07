@@ -6,6 +6,18 @@
     android:orientation="vertical"
     tools:context=".fragment.UserFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:background="@color/orange_light"
+        android:textColor="@color/white"
+        android:text="@string/userlist"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="28sp" />
+
     <ListView
         android:id="@+id/userList"
         android:layout_width="match_parent"

@@ -6,13 +6,28 @@
     android:orientation="vertical"
     tools:context=".fragment.AddUserFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="1"
+        android:background="@color/orange_light"
+        android:textColor="@color/white"
+        android:text="@string/userlist"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
+        android:textSize="28sp" />
+
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  用户姓名"
+        android:text="用户姓名"
         android:inputType="textPersonName"
         android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:background="@color/orange"
         android:textColor="@color/white"/>
 
@@ -21,12 +36,16 @@
         android:background="@color/orange_lightest"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:paddingLeft="3dp"
         android:singleLine="true" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  联系方式"
+        android:text="联系方式"
         android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:background="@color/orange"
         android:textColor="@color/white"/>
 
@@ -35,13 +54,17 @@
         android:background="@color/orange_lightest"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:paddingLeft="3dp"
         android:inputType="phone"
         android:singleLine="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  地址"
+        android:text="地址"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:textSize="20sp"
         android:background="@color/orange"
         android:textColor="@color/white"/>
@@ -51,14 +74,18 @@
         android:background="@color/orange_lightest"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:paddingLeft="3dp"
         android:inputType="text"
         android:singleLine="true" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  用户性别"
+        android:text="用户性别"
         android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:background="@color/orange"
         android:textColor="@color/white"/>
 
@@ -67,13 +94,13 @@
         android:background="@color/orange_lightest"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingLeft="3dp"
         android:orientation="horizontal">
 
         <RadioButton
             android:id="@+id/male"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:text="男"
             android:textSize="22sp"/>
 
@@ -81,7 +108,6 @@
             android:id="@+id/female"
             android:layout_width="80dp"
             android:layout_height="50dp"
-            android:layout_weight="1"
             android:text="女"
             android:textSize="22sp"/>
 
@@ -90,8 +116,11 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="  登记日期"
+        android:text="登记日期"
         android:textSize="20sp"
+        android:paddingLeft="3dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"
         android:background="@color/orange"
         android:textColor="@color/white"/>
 
@@ -100,7 +129,9 @@
         android:background="@color/orange_lightest"
         android:layout_width="match_parent"
         android:layout_height="45dp"
+        android:paddingLeft="3dp"
         android:singleLine="true" />
+
     <View
         android:layout_width="wrap_content"
         android:layout_height="100dp"></View>
@@ -117,8 +148,8 @@
             android:text="@string/submit"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
+
         <Button
             android:id="@+id/add_user_reset"
             android:layout_width="wrap_content"
@@ -126,8 +157,7 @@
             android:text="@string/reset"
             android:layout_weight="1"
             android:gravity="center"
-            android:textSize="18sp"
-            />
+            android:textSize="18sp" />
 
     </LinearLayout>
 
